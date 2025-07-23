@@ -1,35 +1,59 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Layout from './Components/Layout'
+import Logo from './assets/FosterLogoProfilePicture.png'
 import './App.css'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const people = [
+  {
+    name: 'Business General Questionaire',
+  },
+  {
+    name: 'Business History Form',
+  },
+  {
+    name: 'Credit Report Authorization Form',
+  },
+  {
+    name: 'Personal Financial Statement',
+  },
+  {
+    name: 'Borrower Information Form',
+  },
+  {
+    name: 'Commercial Loan Application',
+  },
+  {
+    name: 'Management Resume Form',
+  },
+  {
+    name: 'Schedule of Real Estate',
+  },
+  {
+    name: 'Business Debt Schedule',
+  },
+]
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Layout>
+      <div className="grid grid-cols-3 gap-4 mt-5">
+        {people.map((person) => (
+          <div className="relative flex items-center space-x-3 rounded-lg bg-white px-6 py-5 shadow-xs focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
+            <div className="shrink-0">
+              <img alt="" src={Logo} className="size-10 rounded-full" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <a href="#" className="focus:outline-hidden">
+                <span aria-hidden="true" className="absolute inset-0" />
+                <p className="text-sm font-medium text-gray-900">{person.name}</p>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Layout>
+  );
 }
 
 export default App
